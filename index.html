@@ -126,6 +126,31 @@ main { max-width: 900px; margin: 0 auto; padding: 32px 20px 80px; }
 .hero h1 { font-size: 24px; font-weight: 800; margin-bottom: 8px; line-height: 1.2; }
 .hero p { font-size: 13px; opacity: .88; max-width: 440px; line-height: 1.7; }
 
+/* ── LUMI HERO ── */
+.lumi-hero {
+  background: linear-gradient(135deg, var(--orange) 0%, var(--orange-d) 60%, var(--orange-dd) 100%);
+  border-radius: 20px;
+  padding: 28px 32px;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--s2);
+}
+.lumi-hero::before {
+  content: '';
+  position: absolute; top: -60px; right: -60px;
+  width: 220px; height: 220px;
+  background: rgba(255,255,255,.07);
+  border-radius: 50%;
+}
+.lumi-hero::after {
+  content: '';
+  position: absolute; bottom: -40px; right: 60px;
+  width: 120px; height: 120px;
+  background: rgba(255,255,255,.05);
+  border-radius: 50%;
+}
+
 /* ── STATUS BAR ── */
 .sbar {
   display: none; align-items: center; gap: 8px;
@@ -226,7 +251,7 @@ textarea:focus {
 .analises { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
 .achip {
   background: var(--bg);
-  border: 2px solid var(--border);
+  border: 1.5px solid var(--border);
   border-radius: var(--r);
   padding: 20px 22px;
   cursor: pointer;
@@ -407,8 +432,9 @@ textarea:focus {
 .hist-tb-l { display: flex; align-items: center; gap: 8px; }
 
 /* ── CONFIG ── */
-.scard { background: var(--bg); border: 1px solid var(--border); border-radius: var(--r); padding: 18px 22px; margin-bottom: 13px; box-shadow: var(--s1); }
-.scard h3 { font-size: 14px; font-weight: 700; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+.scard { background: var(--bg); border: 1px solid var(--border); border-radius: var(--r); padding: 18px 22px; margin-bottom: 13px; box-shadow: var(--s1); transition: box-shadow .2s; }
+.scard:hover { box-shadow: var(--s2); }
+.scard h3 { font-size: 14px; font-weight: 700; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--border); color: var(--text); }
 .srow { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--bg2); gap: 14px; }
 .srow:last-child { border-bottom: none; padding-bottom: 0; }
 .slbl { font-size: 13px; font-weight: 600; }
@@ -422,9 +448,9 @@ textarea:focus {
 .sinp:focus { border-color: var(--orange); box-shadow: 0 0 0 3px rgba(249,115,22,.1); }
 
 /* ── EMPTY ── */
-.empty { text-align: center; padding: 48px 20px; background: var(--bg); border: 1px solid var(--border); border-radius: var(--r); }
-.empty h3 { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
-.empty p { font-size: 13px; color: var(--text3); }
+.empty { text-align: center; padding: 48px 20px; background: var(--bg); border: 1px solid var(--border); border-radius: var(--r); box-shadow: var(--s1); }
+.empty h3 { font-size: 15px; font-weight: 600; margin-bottom: 6px; color: var(--text); }
+.empty p { font-size: 13px; color: var(--text3); line-height: 1.6; }
 
 /* ── MODAL ── */
 .modal { display: none; position: fixed; inset: 0; background: rgba(28,25,23,.5); z-index: 999; align-items: center; justify-content: center; }
@@ -457,8 +483,26 @@ textarea:focus {
 }
 #toast.on { transform: translateX(-50%) translateY(0); }
 
+/* ── SUGESTÕES ── */
+.sugg-btn {
+  background: var(--bg2); border: 1.5px solid var(--orange-m);
+  border-radius: 20px; padding: 6px 14px;
+  font-family: 'Poppins', sans-serif; font-size: 12px; font-weight: 500;
+  cursor: pointer; color: var(--orange-d); transition: all .15s;
+}
+.sugg-btn:hover { background: var(--orange); color: #fff; border-color: var(--orange); }
+
 /* ── TAGS ── */
 .htag { display: inline-block; font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 20px; background: var(--orange-l); color: var(--orange-d); border: 1px solid var(--orange-m); margin-right: 4px; }
+
+/* ── SUGESTÕES ── */
+.sugg-btn {
+  background: var(--bg2); border: 1.5px solid var(--orange-m);
+  border-radius: 20px; padding: 6px 14px;
+  font-family: 'Poppins', sans-serif; font-size: 12px; font-weight: 500;
+  cursor: pointer; color: var(--orange-d); transition: all .15s;
+}
+.sugg-btn:hover { background: var(--orange); color: #fff; border-color: var(--orange); }
 
 /* ── TAGS ── */
 .tag-btn {
@@ -475,6 +519,16 @@ textarea:focus {
 #mResumo .mbox { width: 480px; max-width: 95vw; }
 
 /* ── MOBILE ── */
+.section-hero {
+  margin-bottom: 24px;
+}
+.section-hero h1 {
+  font-size: 22px; font-weight: 800; margin-bottom: 6px; color: var(--text);
+}
+.section-hero p {
+  font-size: 13px; color: var(--text2); line-height: 1.6;
+}
+
 @media(max-width:700px) {
   header { padding: 0 12px; }
   main { padding: 16px 12px 60px; }
@@ -494,22 +548,22 @@ textarea:focus {
 <div id="toast"></div>
 
 <header>
-  <div class="logo" onclick="goTab('analisar')" title="Ir para Analisar">
+  <div class="logo" onclick="goTab('conversar')" title="Ir para Consultor">
     <div class="logo-icon">✦</div>
     Lumen <em>Mind</em>
   </div>
   <nav>
-    <button class="pill on" id="pill-analisar" onclick="goTab('analisar')">Analisar</button>
-    <button class="pill" id="pill-conversar" onclick="goTab('conversar')">Conversar</button>
+    <button class="pill on" id="pill-conversar" onclick="goTab('conversar')">Consultor</button>
+    <button class="pill" id="pill-analisar" onclick="goTab('analisar')">Analisar</button>
     <button class="pill" id="pill-historico" onclick="goTab('historico')">Histórico</button>
-    <button class="pill" id="pill-config" onclick="goTab('config')">Config</button>
+    <button class="pill" id="pill-config" onclick="goTab('config')">Perfil</button>
   </nav>
 </header>
 
 <main>
 
 <!-- ── ANALISAR ── -->
-<div class="tab on" id="analisar">
+<div class="tab" id="analisar">
   <div class="hero">
     <h1>O que seus dados revelam sobre seus clientes?</h1>
     <p>Suba suas pesquisas, entrevistas ou feedbacks. A IA transforma tudo em conclusões prontas para decidir.</p>
@@ -587,6 +641,19 @@ textarea:focus {
     </div>
   </div>
 
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap">
+    <div style="display:flex;align-items:center;gap:8px">
+      <span style="font-size:12px;font-weight:600;color:var(--text2)">🌐 Idioma:</span>
+      <select class="sinp" id="lang" onchange="saveConf()" style="width:auto;padding:6px 10px;font-size:12px">
+        <option value="pt">Português (BR)</option>
+        <option value="en">English</option>
+        <option value="es">Español</option>
+        <option value="fr">Français</option>
+        <option value="de">Deutsch</option>
+        <option value="it">Italiano</option>
+      </select>
+    </div>
+  </div>
   <div class="arow" style="margin-bottom:8px">
     <button class="btn" id="btnA" onclick="analisar()">✦ Analisar</button>
     <button class="btn2" onclick="limparTudo()">Limpar tudo</button>
@@ -624,22 +691,28 @@ textarea:focus {
 </div>
 
 <!-- ── CONVERSAR ── -->
-<div class="tab" id="conversar">
-  <div style="margin-bottom:20px">
-    <h1 style="font-size:22px;font-weight:800;margin-bottom:6px">Pergunte sobre seus <span style="color:var(--orange)">dados</span></h1>
-    <p style="font-size:13px;color:var(--text2)">Faça qualquer pergunta sobre suas análises ou sobre seus clientes.</p>
-  </div>
-  <div class="arow" style="margin-bottom:12px;justify-content:flex-end">
-    <button class="btn2" onclick="novaConversa()" style="font-size:12px">Nova Conversa</button>
-    <button class="btn2" onclick="salvarConversa()" style="font-size:12px">💾 Salvar</button>
-    <button class="btn2" onclick="toggleHistConv()" id="btnHistConv" style="font-size:12px">Histórico</button>
-    <button class="btn" onclick="openModal('mC')">⬇ Exportar</button>
+<!-- ── CONSULTOR (LUMI) ── -->
+<div class="tab on" id="conversar">
+
+  <!-- Lumi header — mesmo estilo do hero do Analisar -->
+  <div class="lumi-hero">
+    <div style="display:flex;align-items:center;gap:18px;position:relative;z-index:1">
+      <div style="width:60px;height:60px;background:rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0;border:2px solid rgba(255,255,255,.35)">✦</div>
+      <div>
+        <div style="font-size:22px;font-weight:800;color:#fff;margin-bottom:3px;line-height:1.1">Lumi</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.88);line-height:1.5">Consultora estratégica · sempre disponível</div>
+      </div>
+      <div style="margin-left:auto;display:flex;align-items:center;gap:7px">
+        <div style="width:9px;height:9px;background:#4ade80;border-radius:50%;animation:pulse 2s infinite;box-shadow:0 0 6px #4ade80"></div>
+        <span style="font-size:12px;color:rgba(255,255,255,.9);font-weight:600">Online</span>
+      </div>
+    </div>
   </div>
 
-  <!-- Histórico de conversas -->
+  <!-- Histórico de conversas collapsible -->
   <div id="histConvPanel" style="display:none;background:var(--bg);border:1px solid var(--border);border-radius:var(--r);padding:16px;margin-bottom:14px;box-shadow:var(--s1)">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px">
-      <span style="font-size:13px;font-weight:700;color:var(--text)">Histórico de Conversas</span>
+      <span style="font-size:13px;font-weight:700;color:var(--text)">Conversas salvas</span>
       <div class="arow">
         <label class="cblbl"><input type="checkbox" id="selAllConv" onchange="togSelAllConv(this)"> Todos</label>
         <span id="selctConv" style="font-size:12px;color:var(--text3)"></span>
@@ -648,32 +721,57 @@ textarea:focus {
       </div>
     </div>
     <div id="histConvList">
-      <div class="empty" style="padding:24px">
+      <div class="empty" style="padding:20px">
         <h3 style="font-size:14px;margin-bottom:6px">Nenhuma conversa salva</h3>
-        <p>Clique em "Salvar" após um chat para guardar aqui.</p>
+        <p>Clique em Salvar após uma conversa.</p>
       </div>
     </div>
   </div>
-  <div class="chat-box">
-    <div class="chat-msgs" id="msgs">
-      <div class="bubble a" style="opacity:1;transform:none">
-        Olá! Pronto para responder sobre seus dados. 👋<br><br>
-        Exemplos: <em>"Quais são as principais reclamações?"</em> · <em>"O que meus clientes mais valorizam?"</em><br><br>
-        Faça uma análise primeiro na aba <strong>Analisar</strong>.
+
+  <!-- Chat area -->
+  <div class="chat-box" style="border-radius:16px;border:1px solid var(--border);box-shadow:var(--s1)">
+    <div class="chat-msgs" id="msgs" style="height:380px;background:var(--bg2)">
+      <!-- Lumi welcome message -->
+      <div style="display:flex;align-items:flex-start;gap:10px;max-width:90%">
+        <div style="width:32px;height:32px;background:linear-gradient(135deg,var(--orange),var(--amber));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;margin-top:2px">✦</div>
+        <div class="bubble a" style="opacity:1;transform:none;border-left:3px solid var(--orange);background:#fff;flex:1">
+          <strong style="color:var(--orange-d)">Olá! Sou a Lumi</strong>, sua consultora estratégica. 👋<br><br>
+          Estou aqui para ajudar você a entender melhor seu negócio, seus clientes e suas oportunidades.<br><br>
+          Faça uma análise na aba <strong>Analisar</strong> e depois volte aqui para conversar — ou me faça qualquer pergunta sobre seu mercado!
+        </div>
       </div>
     </div>
-    <div class="chat-inp">
-      <input type="text" id="cinp" placeholder="Faça uma pergunta sobre seus clientes..." onkeydown="if(event.key==='Enter')chat()">
-      <button onclick="chat()">→</button>
+
+    <!-- Suggested questions -->
+    <div id="suggestions" style="padding:12px 14px;border-top:1px solid var(--border);background:var(--bg);display:flex;flex-wrap:wrap;gap:7px">
+      <div style="width:100%;font-size:11px;font-weight:600;color:var(--text3);margin-bottom:2px;text-transform:uppercase;letter-spacing:.5px">Sugestões</div>
+      <button class="sugg-btn" onclick="useSugg(this)">O que meus clientes mais reclamam?</button>
+      <button class="sugg-btn" onclick="useSugg(this)">Quais são as principais oportunidades?</button>
+      <button class="sugg-btn" onclick="useSugg(this)">O que meus clientes mais valorizam?</button>
+      <button class="sugg-btn" onclick="useSugg(this)">O que devo priorizar agora?</button>
     </div>
+
+    <!-- Input -->
+    <div class="chat-inp" style="border-top:1px solid var(--border);background:var(--bg)">
+      <input type="text" id="cinp" placeholder="Pergunte à Lumi sobre seus clientes e negócio..." onkeydown="if(event.key==='Enter')chat()" style="background:var(--bg2)">
+      <button onclick="chat()" style="background:var(--orange)">→</button>
+    </div>
+  </div>
+
+  <!-- Action buttons below chat -->
+  <div class="arow" style="margin-top:12px;justify-content:flex-end">
+    <button class="btn2" onclick="novaConversa()" style="font-size:12px">Nova Conversa</button>
+    <button class="btn2" onclick="salvarConversa()" style="font-size:12px">💾 Salvar</button>
+    <button class="btn2" onclick="toggleHistConv()" id="btnHistConv" style="font-size:12px">Conversas salvas</button>
+    <button class="btn" onclick="openModal('mC')">⬇ Exportar</button>
   </div>
 </div>
 
 <!-- ── HISTÓRICO ── -->
 <div class="tab" id="historico">
-  <div style="margin-bottom:20px">
-    <h1 style="font-size:22px;font-weight:800;margin-bottom:6px">Histórico de <span style="color:var(--orange)">análises</span></h1>
-    <p style="font-size:13px;color:var(--text2)">Suas análises salvas aparecem aqui.</p>
+  <div class="section-hero">
+    <h1>Histórico de <span style="color:var(--orange)">análises</span></h1>
+    <p>Suas análises salvas aparecem aqui para consulta.</p>
   </div>
   <div class="hist-tb" id="htb">
     <div class="hist-tb-l">
@@ -689,38 +787,42 @@ textarea:focus {
 
 <!-- ── CONFIG ── -->
 <div class="tab" id="config">
-  <div style="margin-bottom:20px">
-    <h1 style="font-size:22px;font-weight:800;margin-bottom:6px">Configurações</h1>
-    <p style="font-size:13px;color:var(--text2)">Personalize sua experiência.</p>
+  <div class="section-hero">
+    <h1>Perfil da <span style="color:var(--orange)">empresa</span></h1>
+    <p>Preencha uma vez. A Lumi usará essas informações em todas as análises e conversas.</p>
   </div>
 
-  <!-- API key oculta — preenchida pelo administrador -->
+  <!-- API key oculta -->
   <input type="hidden" id="ak" value="COLOQUE_SUA_API_KEY_AQUI">
 
   <div class="scard">
-    <h3>🏢 Histórico da empresa</h3>
-    <p style="font-size:12px;color:var(--text2);margin-bottom:12px">Descreva sua empresa: segmento, público-alvo, produtos, diferenciais. Este texto é enviado automaticamente em todas as análises.</p>
-    <textarea id="empresaTxt" style="width:100%;min-height:120px;border:1.5px solid var(--border);border-radius:var(--rs);padding:11px 13px;font-family:'Poppins',sans-serif;font-size:13px;color:var(--text);background:var(--bg2);resize:vertical;outline:none;line-height:1.6" placeholder="Ex: Somos uma loja de moda feminina focada no público 25-45 anos, com presença online e física em São Paulo. Nosso diferencial é o atendimento personalizado e curadoria de peças exclusivas." onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'"></textarea>
-    <div style="display:flex;align-items:center;gap:8px;margin-top:10px">
-      <button class="btn" style="font-size:12px;padding:8px 16px" onclick="salvarEmpresa()">💾 Salvar</button>
-      <button class="btn2" style="font-size:12px" onclick="limparEmpresa()">✕ Limpar</button>
-      <span id="empresaSaved" style="font-size:11px;color:var(--ok);display:none">✓ Salvo!</span>
-    </div>
+    <h3>🏢 História da empresa</h3>
+    <p style="font-size:12px;color:var(--text2);margin-bottom:10px">Conte sobre sua empresa: segmento, público-alvo, produtos ou serviços e diferenciais.</p>
+    <textarea id="empresaTxt" style="width:100%;min-height:110px;border:1.5px solid var(--border);border-radius:var(--rs);padding:11px 13px;font-family:'Poppins',sans-serif;font-size:13px;color:var(--text);background:var(--bg2);resize:vertical;outline:none;line-height:1.6" placeholder="Ex: Somos uma loja de moda feminina focada no público 25-45 anos, com presença online e física em São Paulo. Nosso diferencial é o atendimento personalizado e curadoria de peças exclusivas." onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'"></textarea>
   </div>
 
   <div class="scard">
-    <h3>🌐 Idioma das análises</h3>
-    <div class="srow">
-      <div><div class="slbl">Idioma</div><div class="sdesc">Idioma em que as análises serão geradas</div></div>
-      <select class="sinp" id="lang" onchange="saveConf()">
-        <option value="pt">Português (BR)</option>
-        <option value="en">English</option>
-        <option value="es">Español</option>
-        <option value="fr">Français</option>
-        <option value="de">Deutsch</option>
-        <option value="it">Italiano</option>
-      </select>
-    </div>
+    <h3>🎯 Missão</h3>
+    <p style="font-size:12px;color:var(--text2);margin-bottom:10px">Por que sua empresa existe? O que ela faz e para quem?</p>
+    <textarea id="missaoTxt" style="width:100%;min-height:80px;border:1.5px solid var(--border);border-radius:var(--rs);padding:11px 13px;font-family:'Poppins',sans-serif;font-size:13px;color:var(--text);background:var(--bg2);resize:vertical;outline:none;line-height:1.6" placeholder="Ex: Oferecer moda feminina de qualidade com atendimento personalizado, tornando cada cliente única." onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'"></textarea>
+  </div>
+
+  <div class="scard">
+    <h3>🔭 Visão</h3>
+    <p style="font-size:12px;color:var(--text2);margin-bottom:10px">Onde sua empresa quer chegar? Qual é o seu grande objetivo?</p>
+    <textarea id="visaoTxt" style="width:100%;min-height:80px;border:1.5px solid var(--border);border-radius:var(--rs);padding:11px 13px;font-family:'Poppins',sans-serif;font-size:13px;color:var(--text);background:var(--bg2);resize:vertical;outline:none;line-height:1.6" placeholder="Ex: Ser a marca de moda feminina mais querida de São Paulo até 2027." onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'"></textarea>
+  </div>
+
+  <div class="scard">
+    <h3>💎 Valores</h3>
+    <p style="font-size:12px;color:var(--text2);margin-bottom:10px">Quais princípios guiam sua empresa no dia a dia?</p>
+    <textarea id="valoresTxt" style="width:100%;min-height:80px;border:1.5px solid var(--border);border-radius:var(--rs);padding:11px 13px;font-family:'Poppins',sans-serif;font-size:13px;color:var(--text);background:var(--bg2);resize:vertical;outline:none;line-height:1.6" placeholder="Ex: Autenticidade, respeito à cliente, qualidade, inovação e sustentabilidade." onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'"></textarea>
+  </div>
+
+  <div style="display:flex;align-items:center;gap:10px;margin-top:4px">
+    <button class="btn" style="font-size:13px;padding:10px 24px" onclick="salvarPerfil()">💾 Salvar Perfil</button>
+    <button class="btn2" style="font-size:12px" onclick="limparPerfil()">✕ Limpar tudo</button>
+    <span id="perfilSaved" style="font-size:12px;color:var(--ok);display:none">✓ Perfil salvo com sucesso!</span>
   </div>
 </div>
 
@@ -831,6 +933,7 @@ document.addEventListener('click', function(e) {
 
 window.addEventListener('load', () => {
   loadConf(); loadHist();
+  goTab('conversar');
   const dz = document.getElementById('dz');
   dz.addEventListener('dragover', e => { e.preventDefault(); dz.classList.add('over'); });
   dz.addEventListener('dragleave', () => dz.classList.remove('over'));
@@ -1162,7 +1265,14 @@ async function chat() {
   S.chatHist.push({role:'user',content:msg});
   const typing=bubble('...','a');
   const ctxTrunc=S.chatCtx?S.chatCtx.slice(0,2000)+(S.chatCtx.length>2000?'\n[...resumido...]':''):'';
-  const sys=ctxTrunc?'Você é assistente de negócios. Responda perguntas com base nesta análise:\n\n'+ctxTrunc:'Você é assistente especializado em análise de clientes e estratégia de negócios.';
+  const lumiPersona='Você é a Lumi, consultora estratégica do Lumen Mind. '
+    +'Você é especialista em análise de clientes, comportamento do consumidor e estratégia de negócios. '
+    +'Seu tom é acolhedor, direto e confiante — como uma consultora experiente falando com um empresário. '
+    +'IMPORTANTE: Você se chama Lumi. Nunca revele que é Claude ou qualquer outra IA. '
+    +'Se perguntarem seu nome ou quem você é, diga apenas que é a Lumi, consultora do Lumen Mind. ';
+  const sys = lumiPersona + (ctxTrunc
+    ? '\n\nBaseie suas respostas nesta análise dos dados da empresa:\n\n'+ctxTrunc
+    : '');
   try {
     const res=await fetch('https://api.anthropic.com/v1/messages',{
       method:'POST',
@@ -1183,11 +1293,32 @@ async function chat() {
     S.chatHist.pop();
   }
 }
+function useSugg(btn) {
+  document.getElementById('cinp').value = btn.textContent;
+  document.getElementById('suggestions').style.display = 'none';
+  chat();
+}
+
 function bubble(text,cls) {
-  const c=document.getElementById('msgs'),b=document.createElement('div');
-  b.className='bubble '+cls; b.textContent=text;
-  if(cls==='a') b.style.opacity='0.6';
-  c.appendChild(b); c.scrollTop=c.scrollHeight; return b;
+  const c=document.getElementById('msgs');
+  if(cls==='a') {
+    // Lumi message with avatar
+    const wrap=document.createElement('div');
+    wrap.style.cssText='display:flex;align-items:flex-start;gap:10px;max-width:90%';
+    const avatar=document.createElement('div');
+    avatar.style.cssText='width:32px;height:32px;background:linear-gradient(135deg,var(--orange),var(--amber));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;margin-top:2px;color:#fff';
+    avatar.textContent='✦';
+    const b=document.createElement('div');
+    b.className='bubble a';
+    b.style.cssText='opacity:0.6;border-left:3px solid var(--orange);background:#fff;flex:1';
+    b.textContent=text;
+    wrap.appendChild(avatar); wrap.appendChild(b);
+    c.appendChild(wrap); c.scrollTop=c.scrollHeight; return b;
+  } else {
+    const b=document.createElement('div');
+    b.className='bubble '+cls; b.textContent=text;
+    c.appendChild(b); c.scrollTop=c.scrollHeight; return b;
+  }
 }
 
 // ── HISTORY ────────────────────────────────────────────────────
@@ -1527,6 +1658,37 @@ function getLangInstruction(){
   const lang=document.getElementById('lang')?.value||'pt';
   const map={pt:'Escreva em português do Brasil',en:'Write in English',es:'Escribe en español',fr:'Écris en français',de:'Schreibe auf Deutsch',it:'Scrivi in italiano'};
   return map[lang]||map['pt'];
+}
+
+function salvarPerfil(){
+  var empresa = document.getElementById('empresaTxt').value.trim();
+  var missao  = document.getElementById('missaoTxt').value.trim();
+  var visao   = document.getElementById('visaoTxt').value.trim();
+  var valores = document.getElementById('valoresTxt').value.trim();
+  // Sync hidden ctx
+  var ctx = '';
+  if(empresa) ctx += 'EMPRESA: '+empresa+'\n\n';
+  if(missao)  ctx += 'MISSÃO: '+missao+'\n\n';
+  if(visao)   ctx += 'VISÃO: '+visao+'\n\n';
+  if(valores) ctx += 'VALORES: '+valores;
+  document.getElementById('ctx').value = ctx.trim();
+  var conf = JSON.parse(localStorage.getItem('lm_conf')||'{}');
+  conf.empresa = empresa; conf.missao = missao; conf.visao = visao; conf.valores = valores;
+  localStorage.setItem('lm_conf', JSON.stringify(conf));
+  var badge = document.getElementById('perfilSaved');
+  if(badge){ badge.style.display='inline'; setTimeout(function(){ badge.style.display='none'; }, 3000); }
+  toast('✓ Perfil da empresa salvo!');
+}
+
+function limparPerfil(){
+  ['empresaTxt','missaoTxt','visaoTxt','valoresTxt'].forEach(function(id){
+    var el=document.getElementById(id); if(el) el.value='';
+  });
+  document.getElementById('ctx').value='';
+  var conf=JSON.parse(localStorage.getItem('lm_conf')||'{}');
+  conf.empresa=''; conf.missao=''; conf.visao=''; conf.valores='';
+  localStorage.setItem('lm_conf',JSON.stringify(conf));
+  toast('✓ Perfil limpo.');
 }
 
 function salvarEmpresa(){
